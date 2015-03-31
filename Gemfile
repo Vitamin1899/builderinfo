@@ -43,3 +43,10 @@ group :development, :test do
   gem 'spring'
 end
 
+# Device authentication
+gem 'devise'
+gem 'cancan'
+gem 'rolify'
+# Bootstrap integration
+gem 'bootstrap-sass', '~> 3.3.3'
+
