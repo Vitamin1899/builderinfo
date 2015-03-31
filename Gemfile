@@ -35,7 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'pry-byebug'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -47,6 +47,7 @@ end
 gem 'devise'
 gem 'cancan'
 gem 'rolify'
+
 # Bootstrap integration
 gem 'bootstrap-sass', '~> 3.3.3'
 
