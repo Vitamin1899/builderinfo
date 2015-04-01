@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :verification_role, only: [:new, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -72,4 +73,12 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :age, :password, :password_confirmation)
     end
+
+    def verification_role
+        unless current_user.has_role? :owner
+          redirect_to users_url
+          flash.now[:error] = "You must be owner"
+        end
+    end
+
 end

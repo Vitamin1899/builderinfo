@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, only: [:show, :edit, :update, :destroy]
+  before_action :verification_role, only: [:new, :edit, :update, :destroy]
 
   # GET /organizations
   # GET /organizations.json
@@ -71,4 +72,12 @@ class OrganizationsController < ApplicationController
     def organization_params
       params.require(:organization).permit(:title)
     end
+
+    def verification_role
+        unless current_user.has_role? :owner
+          redirect_to organizations_url
+          flash.now[:error] = "You must be owner"
+        end
+    end
+
 end
